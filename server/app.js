@@ -3,10 +3,10 @@ const { graphqlHTTP } = require('express-graphql')
 const schema = require('./schema/schema')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const dotenv = require('dotenv')
+dotenv.config()
 
-CONNECTION_URL =
-  'mongodb+srv://atoz-movie-zayed:zayed_3996@cluster0.6gnbd.mongodb.net/atoz-movie?retryWrites=true&w=majority'
-mongoose.connect(CONNECTION_URL)
+mongoose.connect(process.env.CONNECTION_URL)
 mongoose.connection.once('open', () => {
   console.log('Connection with database successfully')
 })
